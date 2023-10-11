@@ -1,22 +1,30 @@
 <div>
   <h1 class="font-bold text-4xl">PageWithTabs#index</h1>
-  
-  <div data-controller="tabs" data-tabs-active-tab-class="-mb-px border-l border-t border-r rounded-t" data-tabs-update-anchor-value="true">
-    <ul class="list-reset flex border-b">
-      <li class="-mb-px mr-1" id="active_tab" data-tabs-target="tab" data-action="click->tabs#change">
-        <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-700 font-semibold no-underline" href="#">Active</a>
-      </li>
-      <li class="mr-1" id="selected_tab" data-tabs-target="tab" data-action="click->tabs#change">
-        <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-700 font-semibold no-underline" href="#">Tab</a>
-      </li>
-    </ul>
 
-    <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-      Tab panel 1
+  <%= link_to "Back", root_path, class: "underline font-medium" %>
+  
+  <div data-controller="tabs" data-tabs-active-tab-class="border-slate-500 text-slate-600" data-tabs-inactive-tab-class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200" data-tabs-update-anchor-value="true" class="space-y-4" data-tabs-index-value="0">
+    <div class="hidden sm:block">
+      <div class="border-b border-gray-200">
+        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+          <a class="cursor-pointer whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm space-x-2 border-slate-500 text-slate-600"
+            data-tabs-target="tab" data-action="click->tabs#change" id="not_selected_tab">
+            <span>Should not be selected</span>
+          </a>
+          <a class="cursor-pointer whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm space-x-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
+            data-tabs-target="tab" data-action="click->tabs#change" id="selected_tab">
+            <span>Should be selected</span>
+          </a>
+        </nav>
+      </div>
     </div>
 
-    <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-      Tab panel 2
+
+    <div class="flex flex-col space-y-4" data-tabs-target="panel">
+      <p>Should not be selected</p>
+    </div>
+    <div class="flex flex-col space-y-4 hidden" data-tabs-target="panel">
+      <p>Should be selected</p>
     </div>
   </div>
 </div>
